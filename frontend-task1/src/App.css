@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.inputContainer{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.cardText{
+  font-size: larger;
+  padding: 12px 5px;
+  margin: 8px 0;
+  color: darkgray;
+}
+
+.cardInput{
+  width: 8%;
+  font-size: large;
+  padding: 12px 14px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+}
+
+.cardInput:focus ,.cardInput:active{
+  outline: none;
+  border: 2px solid lightseagreen !important;
+}
+
+.submit {
+  background-color: #008CBA; 
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  margin: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.submit:hover{
+  background-color: #0078a0;
+}
+
+.item{
+  margin: 8px 8px;
+  font-size: larger;
+
+}
