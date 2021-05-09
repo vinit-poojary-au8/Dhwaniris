@@ -1,18 +1,33 @@
 import React, { useState } from 'react'
 
 function Form({ addCard }) {
-	const [number, setNumber] = useState('')
+	const [inputNumber, setInputNumber] = useState({})
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if (!number) return
+		if (Object.keys(inputNumber).length !== 4) {
+			alert('Please input 16 digit Card Number')
+			return
+		}
+		let number = ''
+		for (let num in inputNumber) {
+			number += inputNumber[num]
+		}
 		addCard(number)
-		setNumber('')
+		setInputNumber({})
+		let allInput = document.querySelectorAll('.cardInput')
+		allInput.forEach((element) => (element.value = ''))
 	}
-	// const handleNumber = (e, index) => {
-	// 	const newValue = e.target.value
-	// 	setNumber([...number, newValue])
-	// }
+	const handleNumber = (e) => {
+		const { id, value, maxLength } = e.target
+		if (value.length >= maxLength) {
+			setInputNumber({ ...inputNumber, [id]: value })
+			const nextInput = document.getElementById(parseInt(id) + 1)
+			if (nextInput !== null) {
+				nextInput.focus()
+			}
+		}
+	}
 
 	return (
 		<form className='inputContainer' onSubmit={handleSubmit}>
@@ -20,9 +35,10 @@ function Form({ addCard }) {
 			{[...Array(4)].map((_, index) => (
 				<input
 					key={index}
+					id={`${index}`}
 					type='text'
 					className='cardInput'
-					onChange={(e) => setNumber(e.target.value)}
+					onChange={handleNumber}
 					maxLength='4'
 				/>
 			))}
